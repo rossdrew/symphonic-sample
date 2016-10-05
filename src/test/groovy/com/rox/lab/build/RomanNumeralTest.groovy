@@ -42,6 +42,18 @@ class RomanNumeralTest extends Specification {
         then: numeral.numericalValue() == 166
     }
 
+    def "Various random tests"(){
+        when: RomanNumeral numeral = new RomanNumeral(numeralString);
+        then: numeral.numericalValue() == expectedValue
+
+        where:
+        numeralString || expectedValue
+        "MCC" || 1200
+        "CM" || 900
+        "CCC" || 300
+        "XCCC" || 290
+    }
+
 }
 
 
