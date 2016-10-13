@@ -1,11 +1,21 @@
 package com.rox.lab.build;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @Author rossdrew
  * @Created 05/08/16.
  */
 public class RomanNumeral {
+    private static Pattern romanNumeralPattern = Pattern.compile("[IVXLCDM]*");
+
     private String numeralString;
+
+    public static boolean isValid(String string){
+        Matcher m = romanNumeralPattern.matcher(string);
+        return m.matches();
+    }
 
     public RomanNumeral(String numeralString){
         this.numeralString = numeralString;

@@ -7,6 +7,21 @@ import spock.lang.Specification
  * @Created 04/08/16.
  */
 class RomanNumeralTest extends Specification {
+    def "Test if string is valid"(){
+        when: boolean result = RomanNumeral.isValid(testString)
+        then: result == expectedValue
+
+        where:
+        testString  || expectedValue
+        "I"         || true
+        "IV"        || true
+        "IVX"       || true
+        "IC"        || true
+        "MDCLX"     || true
+        "Q"         || false
+        "9"         || false
+    }
+
     def "Single numeral : 'I'-> 1"() {
         when: RomanNumeral numeral = new RomanNumeral("I");
         then: numeral.numericalValue() == 1
@@ -47,11 +62,11 @@ class RomanNumeralTest extends Specification {
         then: numeral.numericalValue() == expectedValue
 
         where:
-        numeralString || expectedValue
-        "MCC" || 1200
-        "CM" || 900
-        "CCC" || 300
-        "XCCC" || 290
+        numeralString   || expectedValue
+        "MCC"           || 1200
+        "CM"            || 900
+        "CCC"           || 300
+        "XCCC"          || 290
     }
 
 }
